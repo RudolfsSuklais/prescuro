@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "./NavBar.css";
 import logo from "./prescuro-logo.png";
 
 const NavBar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
+            setScrolled(window.scrollY > 50);
         };
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    // Close mobile menu when route changes
+    useEffect(() => {
+        setMobileMenuOpen(false);
+    }, [location]);
 
     const navVariants = {
         hidden: { opacity: 0, y: -20 },
@@ -27,7 +29,7 @@ const NavBar = () => {
     };
 
     const navItems = [
-        { name: "Home", path: "/" },
+        { name: "Home", path: "/", end: true },
         { name: "Services", path: "/services" },
         { name: "Projects", path: "/projects" },
         { name: "About", path: "/about" },
@@ -50,25 +52,33 @@ const NavBar = () => {
                     whileTap={{ scale: 0.95 }}
                     className="logo"
                 >
-                    <Link to="/">
+                    <NavLink to="/">
                         <img
                             src={logo}
                             alt="Prescuro Logo"
                             className="logo-image"
                         />
-                    </Link>
+                    </NavLink>
                 </motion.div>
 
                 {/* Desktop Navigation */}
                 <ul className="nav-links">
-                    {navItems.map((item, index) => (
+                    {navItems.map((item) => (
                         <motion.li
-                            key={index}
+                            key={item.path}
                             whileHover={{ y: -2 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <Link to={item.path}>{item.name}</Link>
-                            <div className="nav-underline"></div>
+                            <NavLink
+                                to={item.path}
+                                end={item.end}
+                                className={({ isActive }) =>
+                                    `nav-link ${isActive ? "active" : ""}`
+                                }
+                            >
+                                {item.name}
+                                <div className="nav-underline" />
+                            </NavLink>
                         </motion.li>
                     ))}
                 </ul>
@@ -79,9 +89,14 @@ const NavBar = () => {
                     whileTap={{ scale: 0.95 }}
                     className="nav-cta"
                 >
-                    <Link to="/contact" className="cta-button">
+                    <NavLink
+                        to="/contact"
+                        className={({ isActive }) =>
+                            `cta-button ${isActive ? "active-cta" : ""}`
+                        }
+                    >
                         Get a Quote
-                    </Link>
+                    </NavLink>
                 </motion.div>
 
                 {/* Mobile Menu Button */}
@@ -89,29 +104,23 @@ const NavBar = () => {
                     className="mobile-menu-button"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     aria-label="Toggle menu"
+                    aria-expanded={mobileMenuOpen}
                 >
-                    <motion.div
-                        animate={
-                            mobileMenuOpen
-                                ? { rotate: 45, y: 7 }
-                                : { rotate: 0, y: 0 }
-                        }
-                        className="menu-line"
-                    ></motion.div>
-                    <motion.div
-                        animate={
-                            mobileMenuOpen ? { opacity: 0 } : { opacity: 1 }
-                        }
-                        className="menu-line"
-                    ></motion.div>
-                    <motion.div
-                        animate={
-                            mobileMenuOpen
-                                ? { rotate: -45, y: -7 }
-                                : { rotate: 0, y: 0 }
-                        }
-                        className="menu-line"
-                    ></motion.div>
+                    {[0, 1, 2].map((index) => (
+                        <motion.div
+                            key={index}
+                            animate={
+                                mobileMenuOpen
+                                    ? index === 0
+                                        ? { rotate: 45, y: 7 }
+                                        : index === 1
+                                        ? { opacity: 0 }
+                                        : { rotate: -45, y: -7 }
+                                    : { rotate: 0, y: 0, opacity: 1 }
+                            }
+                            className="menu-line"
+                        />
+                    ))}
                 </button>
             </div>
 
@@ -124,11 +133,12 @@ const NavBar = () => {
                         : { height: 0, opacity: 0 }
                 }
                 className="mobile-menu"
+                style={{ pointerEvents: mobileMenuOpen ? "auto" : "none" }}
             >
                 <ul>
                     {navItems.map((item, index) => (
                         <motion.li
-                            key={index}
+                            key={item.path}
                             initial={{ x: -20, opacity: 0 }}
                             animate={
                                 mobileMenuOpen
@@ -136,9 +146,16 @@ const NavBar = () => {
                                     : { x: -20, opacity: 0 }
                             }
                             transition={{ delay: index * 0.1 }}
-                            onClick={() => setMobileMenuOpen(false)}
                         >
-                            <Link to={item.path}>{item.name}</Link>
+                            <NavLink
+                                to={item.path}
+                                end={item.end}
+                                className={({ isActive }) =>
+                                    `mobile-link ${isActive ? "active" : ""}`
+                                }
+                            >
+                                {item.name}
+                            </NavLink>
                         </motion.li>
                     ))}
                     <motion.li
@@ -149,11 +166,15 @@ const NavBar = () => {
                                 : { x: -20, opacity: 0 }
                         }
                         transition={{ delay: navItems.length * 0.1 }}
-                        onClick={() => setMobileMenuOpen(false)}
                     >
-                        <Link to="/contact" className="mobile-cta">
+                        <NavLink
+                            to="/contact"
+                            className={({ isActive }) =>
+                                `mobile-cta ${isActive ? "active-cta" : ""}`
+                            }
+                        >
                             Get a Quote
-                        </Link>
+                        </NavLink>
                     </motion.li>
                 </ul>
             </motion.div>

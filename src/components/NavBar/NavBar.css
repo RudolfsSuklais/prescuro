@@ -26,6 +26,15 @@
     backdrop-filter: blur(10px);
 }
 
+/* Added this new rule for when mobile menu is open */
+.navbar.mobile-open,
+.navbar.mobile-open.scrolled {
+    background-color: rgba(37, 37, 37, 0.98);
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
@@ -191,4 +200,19 @@
     .logo a {
         font-size: 1.5rem;
     }
+}
+
+/* For desktop navigation */
+.nav-links .active {
+    color: #30d5c8 !important;
+}
+
+.nav-links .active .nav-underline {
+    width: 100%;
+}
+
+/* For mobile navigation */
+.mobile-menu .active {
+    color: #30d5c8 !important;
+    font-weight: 600;
 }
