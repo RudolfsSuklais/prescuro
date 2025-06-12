@@ -12,6 +12,20 @@ const Home = () => {
     const constructionVideo =
         "https://res.cloudinary.com/dszkl0dtq/video/upload/v1749750296/Untitled_video_-_Made_with_Clipchamp_1_jziedi.mp4";
 
+    // Check if device supports hover (desktop) or not (mobile)
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     useEffect(() => {
         if (isInView) {
             controls.start("visible");
@@ -120,6 +134,26 @@ const Home = () => {
         );
     };
 
+    // Only apply hover effects if not on mobile
+    const hoverProps = isMobile
+        ? {}
+        : {
+              whileHover: { scale: 1.05, backgroundColor: "#1fb3a8" },
+              whileTap: { scale: 0.95 },
+          };
+
+    const cardHoverProps = isMobile
+        ? {}
+        : {
+              whileHover: { y: -10 },
+          };
+
+    const timelineCardHoverProps = isMobile
+        ? {}
+        : {
+              whileHover: { scale: 1.03 },
+          };
+
     return (
         <div className="homepage">
             <title>Prescuro | Home</title>
@@ -176,18 +210,13 @@ const Home = () => {
                         className="hero-cta-container"
                     >
                         <motion.button
-                            whileHover={{
-                                scale: 1.05,
-                                backgroundColor: "#1fb3a8",
-                            }}
-                            whileTap={{ scale: 0.95 }}
+                            {...hoverProps}
                             className="cta-button primary"
                         >
                             OUR SERVICES
                         </motion.button>
                         <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            {...hoverProps}
                             className="cta-button secondary"
                         >
                             CONTACT US
@@ -248,7 +277,7 @@ const Home = () => {
                                 key={stat.id}
                                 variants={itemVariants}
                                 className="stat-card"
-                                whileHover={{ y: -5 }}
+                                {...cardHoverProps}
                             >
                                 <h3>
                                     <Counter
@@ -295,7 +324,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.1 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            whileHover={{ y: -10 }}
+                            {...cardHoverProps}
                         >
                             <div className="service-image">
                                 <img
@@ -322,7 +351,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            whileHover={{ y: -10 }}
+                            {...cardHoverProps}
                         >
                             <div className="service-image">
                                 <img
@@ -349,7 +378,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            whileHover={{ y: -10 }}
+                            {...cardHoverProps}
                         >
                             <div className="service-image">
                                 <img
@@ -375,7 +404,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            whileHover={{ y: -10 }}
+                            {...cardHoverProps}
                         >
                             <div className="service-image">
                                 <img
@@ -401,7 +430,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            whileHover={{ y: -10 }}
+                            {...cardHoverProps}
                         >
                             <div className="service-image">
                                 <img
@@ -427,7 +456,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.6 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            whileHover={{ y: -10 }}
+                            {...cardHoverProps}
                         >
                             <div className="service-image">
                                 <img
@@ -455,12 +484,7 @@ const Home = () => {
                     >
                         <motion.button
                             className="view-more-button dark"
-                            whileHover={{
-                                scale: 1.05,
-                                backgroundColor: "#1fb3a8",
-                                color: "#fff",
-                            }}
-                            whileTap={{ scale: 0.95 }}
+                            {...hoverProps}
                         >
                             View All Services
                         </motion.button>
@@ -497,7 +521,7 @@ const Home = () => {
                             </div>
                             <motion.div
                                 className="timeline-card"
-                                whileHover={{ scale: 1.03 }}
+                                {...timelineCardHoverProps}
                             >
                                 <h4>Our Foundation</h4>
                                 <p>
@@ -515,7 +539,7 @@ const Home = () => {
                             </div>
                             <motion.div
                                 className="timeline-card"
-                                whileHover={{ scale: 1.03 }}
+                                {...timelineCardHoverProps}
                             >
                                 <h4>Growth Milestone</h4>
                                 <p>
@@ -535,7 +559,7 @@ const Home = () => {
                             </div>
                             <motion.div
                                 className="timeline-card"
-                                whileHover={{ scale: 1.03 }}
+                                {...timelineCardHoverProps}
                             >
                                 <h4>Current Progress (as of June)</h4>
                                 <p>
@@ -698,12 +722,7 @@ const Home = () => {
                             >
                                 <motion.button
                                     className="view-more-button dark"
-                                    whileHover={{
-                                        scale: 1.05,
-                                        backgroundColor: "#1fb3a8",
-                                        color: "#fff",
-                                    }}
-                                    whileTap={{ scale: 0.95 }}
+                                    {...hoverProps}
                                 >
                                     More About Us
                                 </motion.button>

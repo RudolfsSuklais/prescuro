@@ -866,3 +866,91 @@
     font-size: 0.95rem;
     line-height: 1.6;
 }
+
+/* Add this media query at the end of your CSS to disable all hover effects on mobile */
+@media (hover: hover) and (pointer: fine) {
+    /* These are all your existing hover effects that should only work on devices that support hover */
+
+    /* Hero Section Hovers */
+    .cta-button.primary:hover {
+        background-color: #1fb3a8;
+    }
+
+    .cta-button.secondary:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Stats Section Hovers */
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border-color: rgba(48, 213, 200, 0.3);
+    }
+
+    .stat-card:hover::before {
+        opacity: 1;
+    }
+
+    /* Services Section Hovers */
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card:hover .service-image img {
+        transform: scale(1.05);
+    }
+
+    .service-card:hover .service-content h3 {
+        color: var(--primary);
+    }
+
+    /* View More Button Hover */
+    .view-more-button:hover::before {
+        left: 0;
+    }
+
+    .view-more-button:hover {
+        color: white;
+    }
+
+    /* Dark Theme Hovers */
+    .view-more-button.dark:hover {
+        background-color: var(--primary) !important;
+        color: #252525 !important;
+    }
+
+    /* Timeline Card Hover */
+    .timeline-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Alternative approach for older browsers */
+@media (max-width: 767px) {
+    /* Disable all hover effects by making them identical to non-hover states */
+    .cta-button.primary:hover,
+    .cta-button.secondary:hover,
+    .stat-card:hover,
+    .service-card:hover,
+    .view-more-button:hover,
+    .view-more-button.dark:hover,
+    .timeline-card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        background-color: inherit !important;
+        color: inherit !important;
+        border-color: inherit !important;
+    }
+
+    .stat-card:hover::before,
+    .service-card:hover .service-image img,
+    .service-card:hover .service-content h3,
+    .view-more-button:hover::before {
+        opacity: inherit !important;
+        transform: inherit !important;
+        color: inherit !important;
+        left: inherit !important;
+    }
+}
