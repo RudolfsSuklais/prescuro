@@ -1,0 +1,562 @@
+/* Premium About Page Styles */
+.about-premium {
+    font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Luxury Hero */
+.premium-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 40px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.hero-text-container {
+    max-width: 800px;
+}
+
+.premium-badge {
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #30d5c8;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.hero-title {
+    font-size: 5.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.title-line {
+    display: block;
+}
+
+.accent {
+    color: #30d5c8;
+    font-weight: 500;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.scroll-hint {
+    display: flex;
+    align-items: center;
+    color: white;
+    position: absolute;
+    bottom: 60px;
+    left: 40px;
+    z-index: 4;
+}
+
+.scroll-line {
+    width: 60px;
+    height: 1px;
+    background: white;
+    margin-right: 15px;
+}
+
+/* Philosophy Section */
+.philosophy-section {
+    padding: 160px 0;
+    background: white;
+}
+
+.section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 80px;
+}
+
+.philosophy-content {
+    flex: 1;
+    padding-top: 40px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.title-number {
+    color: #30d5c8;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    font-weight: 300;
+}
+
+.philosophy-statement {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.philosophy-image {
+    flex: 1;
+    position: relative;
+    height: 600px;
+}
+
+.parallax-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.signature-block {
+    margin-top: 60px;
+}
+
+.signature {
+    width: 180px;
+    margin-bottom: 10px;
+}
+
+.signature-name {
+    font-size: 0.9rem;
+    color: #666;
+    display: block;
+}
+
+/* Executive Team */
+.executive-team {
+    padding: 120px 0;
+    background: #f8f8f8;
+}
+
+.section-header {
+    max-width: 1400px;
+    margin: 0 auto 80px;
+    padding: 0 40px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 300;
+}
+
+.executive-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 40px;
+}
+
+.executive-card {
+    background: white;
+    display: flex;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.executive-image-container {
+    width: 250px;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+}
+
+.executive-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.executive-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(48, 213, 200, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.view-profile {
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.executive-card:hover .executive-overlay {
+    opacity: 1;
+}
+
+.executive-card:hover .executive-portrait {
+    transform: scale(1.05);
+}
+
+.executive-info {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.executive-name {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.executive-title {
+    color: #30d5c8;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.executive-bio {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.contact-link {
+    font-size: 0.9rem;
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.contact-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #30d5c8;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.contact-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Milestones */
+.milestones-section {
+    padding: 160px 0;
+    background: white;
+}
+
+.milestones-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.milestone-item {
+    display: flex;
+    margin-bottom: 120px;
+    align-items: flex-start;
+}
+
+.milestone-year {
+    font-size: 1.8rem;
+    color: #30d5c8;
+    font-weight: 300;
+    width: 150px;
+    flex-shrink: 0;
+    padding-top: 10px;
+}
+
+.milestone-content {
+    flex: 1;
+    display: flex;
+    gap: 60px;
+}
+
+.milestone-image-container {
+    width: 500px;
+    height: 400px;
+    flex-shrink: 0;
+}
+
+.milestone-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.milestone-text {
+    flex: 1;
+    padding-top: 40px;
+}
+
+.milestone-title {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.milestone-description {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+/* Premium Stats */
+.premium-stats {
+    position: relative;
+    padding: 160px 0;
+    background: url("https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1800&q=80")
+        center/cover no-repeat;
+    color: white;
+}
+
+.stats-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(37, 37, 37, 0.9);
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 0 40px;
+}
+
+.stat-number {
+    font-size: 5rem;
+    font-weight: 300;
+    color: #30d5c8;
+    margin-bottom: 20px;
+}
+
+.stat-divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 auto 20px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+}
+
+/* Bespoke CTA */
+.bespoke-cta {
+    padding: 160px 0;
+    background: #f8f8f8;
+}
+
+.cta-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.cta-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.cta-button {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-icon {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .button-icon {
+    transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 4.5rem;
+    }
+
+    .executive-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .milestone-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .milestone-image-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .section-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .philosophy-image {
+        height: 400px;
+    }
+
+    .executive-card {
+        flex-direction: column;
+    }
+
+    .executive-image-container {
+        width: 100%;
+        height: 300px;
+    }
+
+    .stats-grid {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .cta-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-content,
+    .section-container,
+    .section-header,
+    .executive-grid,
+    .milestones-container {
+        padding: 0 20px;
+    }
+
+    .milestone-item {
+        flex-direction: column;
+    }
+
+    .milestone-year {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

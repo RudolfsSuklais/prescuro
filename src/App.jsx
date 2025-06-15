@@ -1,21 +1,41 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useLocation,
+} from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import BackToTop from "./components/BackToTop/BackToTop.jsx";
 import Home from "./Pages/Home.jsx";
 import Services from "./Pages/Services.jsx";
+import Projects from "./Pages/Projects.jsx";
+import About from "./Pages/About.jsx";
+
+const ScrollToTop = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+};
 
 function App() {
     return (
         <Router>
             <div className="App">
+                <ScrollToTop />
                 <NavBar />
 
                 {/* Page routes */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/services" element={<Services />} />
+                    <Route path="/projects" element={<Projects />} />
+                    <Route path="/about" element={<About />} />
                 </Routes>
 
                 <Footer />
