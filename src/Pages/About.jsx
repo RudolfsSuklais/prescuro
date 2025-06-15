@@ -1,259 +1,437 @@
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useRef, useEffect } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 import "./About.css";
 
 const About = () => {
-    const ref = useRef();
-    const isInView = useInView(ref, { once: false, margin: "-100px" });
+    const controls = useAnimation();
+    const aboutRef = useRef();
+    const isInView = useInView(aboutRef, { once: true, margin: "-100px" });
 
-    // Executive team data
-    const executives = [
-        {
-            id: 1,
-            name: "Erik Johansson",
-            title: "Chief Executive Officer",
-            bio: "25+ years leading major construction projects across Europe",
-            image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-            signature: "/signature1.svg",
-        },
-        {
-            id: 2,
-            name: "Anna Bergman",
-            title: "Chief Design Officer",
-            bio: "Award-winning architect specializing in sustainable commercial spaces",
-            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-            signature: "/signature2.svg",
-        },
-    ];
+    const [isMobile, setIsMobile] = React.useState(false);
 
-    // Milestones
-    const milestones = [
-        {
-            year: "2017",
-            title: "Company Founding",
-            description:
-                "Established in Stockholm with a vision for uncompromising quality",
-            image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    useEffect(() => {
+        if (isInView) {
+            controls.start("visible");
+        }
+    }, [controls, isInView]);
+
+    const hoverProps = isMobile
+        ? {}
+        : {
+              whileHover: { scale: 1.05, backgroundColor: "#1fb3a8" },
+              whileTap: { scale: 0.95 },
+          };
+
+    const cardHoverProps = isMobile
+        ? {}
+        : {
+              whileHover: { y: -10 },
+          };
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                when: "beforeChildren",
+            },
         },
-        {
-            year: "2020",
-            title: "International Expansion",
-            description:
-                "First major project in Oslo set the standard for Nordic excellence",
-            image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut",
+            },
         },
-        {
-            year: "2023",
-            title: "Premium Certification",
-            description: "Awarded Nordic Construction Excellence certification",
-            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+    };
+
+    const timelineItemVariants = {
+        hidden: { opacity: 0, x: -50 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.8,
+                ease: "easeOut",
+            },
         },
-    ];
+    };
+
+    const teamCardVariants = {
+        hidden: { opacity: 0, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut",
+            },
+        },
+    };
+
+    const Counter = ({ target, duration, className }) => {
+        const [count, setCount] = React.useState(0);
+        const ref = useRef(null);
+        const isInView = useInView(ref, { once: true });
+
+        React.useEffect(() => {
+            if (!isInView) return;
+
+            let start = 0;
+            const end = target;
+            const incrementTime = duration / end;
+
+            const timer = setInterval(() => {
+                start += 1;
+                setCount(start);
+                if (start >= end) clearInterval(timer);
+            }, incrementTime);
+
+            return () => clearInterval(timer);
+        }, [target, duration, isInView]);
+
+        return (
+            <span ref={ref} className={className}>
+                {count}
+            </span>
+        );
+    };
 
     return (
-        <div className="about-premium">
-            {/* Luxury Hero */}
-            <section className="premium-hero">
-                <div className="hero-video-container">
-                    <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="hero-video">
-                        <source src="/construction-hero.mp4" type="video/mp4" />
-                    </video>
-                    <div className="hero-overlay"></div>
-                </div>
+        <div className="about-page">
+            <title>Prescuro | About Us</title>
 
-                <div className="hero-content">
+            {/* Hero Section */}
+            <section className="about-hero">
+                <div className="hero-gradient-overlay"></div>
+                <div
+                    className="construction-pattern"
+                    style={{
+                        backgroundImage: `url(https://res.cloudinary.com/dszkl0dtq/image/upload/v1749975935/projects_hero_bg_cd4spg.jpg)`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    }}></div>
+
+                <div className="about-hero-content">
                     <motion.div
-                        initial={{ opacity: 0, y: 40 }}
+                        initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 1,
-                            ease: [0.6, 0.05, -0.01, 0.9],
-                        }}
-                        className="hero-text-container">
-                        <div className="premium-badge">EST. 2017</div>
-                        <h1 className="hero-title">
-                            <span className="title-line">Redefining</span>
-                            <span className="title-line accent">
-                                Construction
-                            </span>
-                            <span className="title-line">Excellence</span>
-                        </h1>
-                        <p className="hero-subtitle">
-                            Premium construction services across Scandinavia
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        className="scroll-hint"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.5 }}>
-                        <div className="scroll-line"></div>
-                        <span>Explore</span>
+                        transition={{ duration: 0.8 }}
+                        className="about-hero-text">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            className="quality-badge">
+                            Building Excellence Since 2017
+                        </motion.div>
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4 }}>
+                            Precision Construction{" "}
+                            <span className="accent">Across</span> Europe
+                        </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                            className="hero-description">
+                            Specializing in complete project management from
+                            foundations to finishes, we bring Swedish quality
+                            standards to every project.
+                        </motion.p>
                     </motion.div>
                 </div>
+
+                <motion.div
+                    className="scroll-indicator"
+                    animate={{
+                        y: [0, 10, 0],
+                    }}
+                    transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatType: "loop",
+                    }}>
+                    ↓
+                </motion.div>
             </section>
 
-            {/* Philosophy Section */}
-            <section className="philosophy-section">
-                <div className="section-container">
+            {/* Mission Section - Updated Design */}
+            <motion.section
+                className="mission-section"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true, margin: "-100px" }}>
+                <div className="mission-container">
                     <motion.div
-                        className="philosophy-content"
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        viewport={{ once: true, margin: "0px 0px -100px 0px" }}>
-                        <h2 className="section-title">
-                            <span className="title-number">01</span>
-                            <span>Our Philosophy</span>
+                        className="mission-content"
+                        initial="hidden"
+                        whileInView="visible"
+                        variants={containerVariants}
+                        viewport={{ once: true }}>
+                        <motion.div
+                            className="mission-header"
+                            variants={itemVariants}>
+                            <h2>
+                                Our <span className="accent">Expertise</span>
+                            </h2>
+                            <p className="mission-subtitle">
+                                Comprehensive construction solutions from start
+                                to finish
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            className="mission-statement"
+                            variants={itemVariants}>
+                            <p>
+                                Founded in 2017, we specialize in managing every
+                                stage of the construction process with precision
+                                — from structural foundations and exterior
+                                finishes to intricate interior details. Our
+                                dedicated team ensures exceptional quality and
+                                craftsmanship at every step.
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            className="mission-features"
+                            variants={containerVariants}>
+                            <motion.div
+                                className="feature-card"
+                                variants={itemVariants}
+                                {...cardHoverProps}>
+                                <div className="feature-icon">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1.06 13.54L7.4 12l1.41-1.41 2.12 2.12 4.24-4.24 1.41 1.41-5.64 5.66z" />
+                                    </svg>
+                                </div>
+                                <h3>Full-Service Contractor</h3>
+                                <p>
+                                    We operate as a general contractor,
+                                    overseeing every stage from planning to
+                                    final delivery with complete accountability.
+                                </p>
+                            </motion.div>
+
+                            <motion.div
+                                className="feature-card"
+                                variants={itemVariants}
+                                {...cardHoverProps}>
+                                <div className="feature-icon">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V8z" />
+                                    </svg>
+                                </div>
+                                <h3>Workforce Solutions</h3>
+                                <p>
+                                    We provide skilled labor outsourcing across
+                                    Europe, delivering flexible, high-quality
+                                    personnel when needed most.
+                                </p>
+                            </motion.div>
+
+                            <motion.div
+                                className="feature-card"
+                                variants={itemVariants}
+                                {...cardHoverProps}>
+                                <div className="feature-icon">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z" />
+                                    </svg>
+                                </div>
+                                <h3>European Reach</h3>
+                                <p>
+                                    Delivering Swedish quality standards and
+                                    precision across projects throughout Sweden
+                                    and Europe.
+                                </p>
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </motion.section>
+
+            {/* Leadership Section - Updated Design */}
+            <motion.section
+                ref={aboutRef}
+                className="leadership-section"
+                initial="hidden"
+                animate={controls}
+                variants={containerVariants}>
+                <div className="leadership-container">
+                    <motion.div
+                        className="leadership-header"
+                        variants={itemVariants}>
+                        <h2>
+                            Our <span className="accent">Strength</span>
                         </h2>
-                        <p className="philosophy-statement">
-                            We believe buildings should embody both aesthetic
-                            vision and structural perfection. Each project
-                            receives the attention of a bespoke creation,
-                            crafted by Europe's finest artisans.
-                        </p>
-                        <div className="signature-block">
-                            <img
-                                src="/ceo-signature.png"
-                                alt="CEO Signature"
-                                className="signature"
-                            />
-                            <span className="signature-name">
-                                Erik Johansson, Founder
-                            </span>
+                        <p>The foundation of our success</p>
+                    </motion.div>
+
+                    <motion.div className="team-stats" variants={itemVariants}>
+                        <div className="stat-item">
+                            <div className="stat-number">20+</div>
+                            <div className="stat-label-strength">
+                                Experienced Managers
+                            </div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">120+</div>
+                            <div className="stat-label-strength">
+                                Skilled Professionals
+                            </div>
                         </div>
                     </motion.div>
 
                     <motion.div
-                        className="philosophy-image"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.2,
-                            ease: "easeOut",
-                        }}
-                        viewport={{ once: true, margin: "0px 0px -100px 0px" }}>
-                        <img
-                            src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-                            alt="Architectural detail"
-                            className="parallax-image"
-                        />
+                        className="team-description"
+                        variants={itemVariants}>
+                        <p>
+                            Prescuro AB is powered by a core team of highly
+                            experienced managers and a workforce of skilled
+                            professionals. Our strength lies in combining
+                            extensive hands-on experience with modern
+                            construction practices to deliver quality at every
+                            stage.
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        className="expertise-grid"
+                        variants={containerVariants}>
+                        <motion.div
+                            className="expertise-card"
+                            variants={teamCardVariants}
+                            {...cardHoverProps}>
+                            <div className="expertise-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                                </svg>
+                            </div>
+                            <h3>Project Management</h3>
+                            <p>
+                                Comprehensive oversight from initial planning
+                                through final delivery
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            className="expertise-card"
+                            variants={teamCardVariants}
+                            {...cardHoverProps}>
+                            <div className="expertise-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 12.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+                                </svg>
+                            </div>
+                            <h3>Groundworks</h3>
+                            <p>
+                                Precision in foundational work for structural
+                                integrity
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            className="expertise-card"
+                            variants={teamCardVariants}
+                            {...cardHoverProps}>
+                            <div className="expertise-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z" />
+                                </svg>
+                            </div>
+                            <h3>Exterior Finishes</h3>
+                            <p>
+                                High-quality facade work that stands the test of
+                                time
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            className="expertise-card"
+                            variants={teamCardVariants}
+                            {...cardHoverProps}>
+                            <div className="expertise-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" />
+                                </svg>
+                            </div>
+                            <h3>Interior Detailing</h3>
+                            <p>
+                                Meticulous attention to interior craftsmanship
+                            </p>
+                        </motion.div>
                     </motion.div>
                 </div>
-            </section>
+            </motion.section>
 
-            {/* Executive Team */}
-            <section className="executive-team">
-                <div className="section-header">
-                    <h2 className="section-title">
-                        <span className="title-number">02</span>
-                        <span>Executive Leadership</span>
-                    </h2>
-                    <p className="section-subtitle">
-                        Visionaries shaping the future of construction
-                    </p>
-                </div>
+            {/* Stats Section */}
+            <motion.section
+                className="about-stats-section"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true, margin: "-100px" }}>
+                <div className="stats-gradient-bg"></div>
+                <div className="about-stats-container">
+                    <motion.div
+                        className="stats-header"
+                        initial={{ y: -20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}>
+                        <h2>
+                            Our <span className="accent">Impact</span>
+                        </h2>
+                        <p>Numbers that demonstrate our capabilities</p>
+                    </motion.div>
 
-                <div className="executive-grid">
-                    {executives.map((exec, index) => (
-                        <motion.div
-                            key={exec.id}
-                            className="executive-card"
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.15 }}
-                            viewport={{
-                                once: true,
-                                margin: "0px 0px -50px 0px",
-                            }}>
-                            <div className="executive-image-container">
-                                <img
-                                    src={exec.image}
-                                    alt={exec.name}
-                                    className="executive-portrait"
-                                />
-                                <div className="executive-overlay">
-                                    <span className="view-profile">
-                                        View Profile
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="executive-info">
-                                <h3 className="executive-name">{exec.name}</h3>
-                                <p className="executive-title">{exec.title}</p>
-                                <p className="executive-bio">{exec.bio}</p>
-                                <div className="executive-contact">
-                                    <span className="contact-link">
-                                        Contact {exec.name.split(" ")[0]}
-                                    </span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Milestones */}
-            <section className="milestones-section">
-                <div className="section-header">
-                    <h2 className="section-title">
-                        <span className="title-number">03</span>
-                        <span>Our Journey</span>
-                    </h2>
-                </div>
-
-                <div className="milestones-container">
-                    {milestones.map((milestone, index) => (
-                        <motion.div
-                            key={index}
-                            className="milestone-item"
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            viewport={{
-                                once: true,
-                                margin: "0px 0px -50px 0px",
-                            }}>
-                            <div className="milestone-year">
-                                {milestone.year}
-                            </div>
-                            <div className="milestone-content">
-                                <div className="milestone-image-container">
-                                    <img
-                                        src={milestone.image}
-                                        alt={milestone.title}
-                                        className="milestone-image"
-                                    />
-                                </div>
-                                <div className="milestone-text">
-                                    <h3 className="milestone-title">
-                                        {milestone.title}
-                                    </h3>
-                                    <p className="milestone-description">
-                                        {milestone.description}
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Premium Stats */}
-            <section className="premium-stats">
-                <div className="stats-overlay"></div>
-                <div className="section-container">
                     <motion.div
                         className="stats-grid"
                         initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
+                        whileInView="visible"
                         variants={{
                             hidden: { opacity: 0 },
                             visible: {
@@ -264,18 +442,34 @@ const About = () => {
                                 },
                             },
                         }}
-                        ref={ref}>
+                        viewport={{ once: true }}>
                         <motion.div
                             className="stat-card"
                             variants={{
                                 hidden: { opacity: 0, y: 30 },
                                 visible: { opacity: 1, y: 0 },
-                            }}>
-                            <div className="stat-number">48</div>
-                            <div className="stat-divider"></div>
-                            <div className="stat-label">
-                                Premium Projects Completed
+                            }}
+                            whileHover={{ y: -10 }}>
+                            <div className="stat-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" />
+                                    <path d="M7 12h2v5H7zm4-7h2v12h-2zm4 4h2v8h-2z" />
+                                </svg>
                             </div>
+                            <div className="stat-content">
+                                <Counter
+                                    target={7}
+                                    duration={1500}
+                                    className="stat-number"
+                                />
+                                <div className="stat-label">
+                                    Years in Operation
+                                </div>
+                            </div>
+                            <div className="stat-decoration"></div>
                         </motion.div>
 
                         <motion.div
@@ -283,10 +477,27 @@ const About = () => {
                             variants={{
                                 hidden: { opacity: 0, y: 30 },
                                 visible: { opacity: 1, y: 0 },
-                            }}>
-                            <div className="stat-number">120+</div>
-                            <div className="stat-divider"></div>
-                            <div className="stat-label">Master Craftsmen</div>
+                            }}
+                            whileHover={{ y: -10 }}>
+                            <div className="stat-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                                </svg>
+                            </div>
+                            <div className="stat-content">
+                                <Counter
+                                    target={12}
+                                    duration={1500}
+                                    className="stat-number"
+                                />
+                                <div className="stat-label">
+                                    European Countries
+                                </div>
+                            </div>
+                            <div className="stat-decoration"></div>
                         </motion.div>
 
                         <motion.div
@@ -294,42 +505,100 @@ const About = () => {
                             variants={{
                                 hidden: { opacity: 0, y: 30 },
                                 visible: { opacity: 1, y: 0 },
-                            }}>
-                            <div className="stat-number">12</div>
-                            <div className="stat-divider"></div>
-                            <div className="stat-label">European Countries</div>
+                            }}
+                            whileHover={{ y: -10 }}>
+                            <div className="stat-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z" />
+                                </svg>
+                            </div>
+                            <div className="stat-content">
+                                <Counter
+                                    target={140}
+                                    duration={1500}
+                                    className="stat-number"
+                                />
+                                <div className="stat-unit">+</div>
+                                <div className="stat-label">
+                                    Dedicated Professionals
+                                </div>
+                            </div>
+                            <div className="stat-decoration"></div>
+                        </motion.div>
+
+                        <motion.div
+                            className="stat-card"
+                            variants={{
+                                hidden: { opacity: 0, y: 30 },
+                                visible: { opacity: 1, y: 0 },
+                            }}
+                            whileHover={{ y: -10 }}>
+                            <div className="stat-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                                </svg>
+                            </div>
+                            <div className="stat-content">
+                                <Counter
+                                    target={100}
+                                    duration={1500}
+                                    className="stat-number"
+                                />
+                                <div className="stat-unit">%</div>
+                                <div className="stat-label">
+                                    Projects Completed On Time
+                                </div>
+                            </div>
+                            <div className="stat-decoration"></div>
                         </motion.div>
                     </motion.div>
                 </div>
-            </section>
+            </motion.section>
 
-            {/* Bespoke CTA */}
-            <section className="bespoke-cta">
-                <div className="cta-container">
+            {/* CTA Section */}
+            <motion.section
+                className="about-cta-section"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true, margin: "-100px" }}>
+                <div className="about-cta-container">
                     <motion.div
                         className="cta-content"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ y: -20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.6 }}
                         viewport={{ once: true }}>
-                        <h2 className="cta-title">
-                            Begin Your Architectural Journey
+                        <h2>
+                            Ready to <span className="accent">Build</span> With
+                            Precision?
                         </h2>
-                        <p className="cta-subtitle">
-                            Contact our concierge team to discuss your vision
+                        <p>
+                            Whether you need complete project management or
+                            specialized workforce solutions, we're ready to
+                            deliver Swedish-quality construction services.
                         </p>
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="cta-button">
-                            <span className="button-text">
-                                Schedule Consultation
-                            </span>
-                            <span className="button-icon">→</span>
-                        </motion.button>
+                        <div className="cta-buttons">
+                            <motion.button
+                                {...hoverProps}
+                                className="cta-button primary">
+                                START A PROJECT
+                            </motion.button>
+                            <motion.button
+                                {...hoverProps}
+                                className="cta-button secondary">
+                                REQUEST WORKFORCE
+                            </motion.button>
+                        </div>
                     </motion.div>
                 </div>
-            </section>
+            </motion.section>
         </div>
     );
 };

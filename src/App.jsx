@@ -12,12 +12,14 @@ import Home from "./Pages/Home.jsx";
 import Services from "./Pages/Services.jsx";
 import Projects from "./Pages/Projects.jsx";
 import About from "./Pages/About.jsx";
-
+import Contact from "./Pages/Contact.jsx";
 const ScrollToTop = () => {
     const { pathname } = useLocation();
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "instant" });
+        }, 50);
     }, [pathname]);
 
     return null;
@@ -36,6 +38,7 @@ function App() {
                     <Route path="/services" element={<Services />} />
                     <Route path="/projects" element={<Projects />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
                 </Routes>
 
                 <Footer />

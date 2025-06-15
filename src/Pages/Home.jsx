@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import "./Home.css";
-
+import { Link } from "react-router-dom";
 import ProjectsSection from "../components/Projects/ProjectsSection";
 
 const Home = () => {
@@ -134,7 +134,6 @@ const Home = () => {
         );
     };
 
-    // Only apply hover effects if not on mobile
     const hoverProps = isMobile
         ? {}
         : {
@@ -165,8 +164,7 @@ const Home = () => {
                     muted
                     loop
                     playsInline
-                    className="video-bg"
-                >
+                    className="video-bg">
                     <source src={constructionVideo} type="video/mp4" />
                     Your browser does not support HTML5 video.
                 </video>
@@ -175,14 +173,12 @@ const Home = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
-                    className="hero-content"
-                >
+                    className="hero-content">
                     <motion.div
                         initial={{ y: -20 }}
                         animate={{ y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="hero-tagline"
-                    >
+                        className="hero-tagline">
                         <div className="quality-badge">Swedish Quality</div>
                         <h1>
                             Expert <span className="accent">Construction </span>
@@ -194,8 +190,7 @@ const Home = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
-                        className="hero-description"
-                    >
+                        className="hero-description">
                         Prescuro AB offers skilled construction, MEP, and
                         interior services across Europe — from groundworks to
                         project completion. We also deliver high-quality
@@ -207,20 +202,21 @@ const Home = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
-                        className="hero-cta-container"
-                    >
-                        <motion.button
-                            {...hoverProps}
-                            className="cta-button primary"
-                        >
-                            OUR SERVICES
-                        </motion.button>
-                        <motion.button
-                            {...hoverProps}
-                            className="cta-button secondary"
-                        >
-                            CONTACT US
-                        </motion.button>
+                        className="hero-cta-container">
+                        <Link to="/services">
+                            <motion.button
+                                {...hoverProps}
+                                className="cta-button primary">
+                                OUR SERVICES
+                            </motion.button>
+                        </Link>
+                        <Link to={"/contact"}>
+                            <motion.button
+                                {...hoverProps}
+                                className="cta-button secondary">
+                                CONTACT US
+                            </motion.button>
+                        </Link>
                     </motion.div>
                 </motion.div>
 
@@ -233,8 +229,7 @@ const Home = () => {
                             duration: 1.5,
                             repeat: Infinity,
                             repeatType: "loop",
-                        }}
-                    >
+                        }}>
                         ↓
                     </motion.div>
                 </div>
@@ -245,22 +240,19 @@ const Home = () => {
                 initial="hidden"
                 animate={controls}
                 variants={containerVariants}
-                className="stats-section"
-            >
+                className="stats-section">
                 <div className="stats-overlay"></div>
                 <div className="stats-container">
                     <motion.div
                         variants={itemVariants}
-                        className="stats-header"
-                    >
+                        className="stats-header">
                         <h2>Build With Confidence</h2>
                         <p>Trusted Across Europe for Over a Decade</p>
                     </motion.div>
 
                     <motion.div
                         variants={itemVariants}
-                        className="stats-description"
-                    >
+                        className="stats-description">
                         <p>
                             Prescuro AB is a Stockholm-based construction
                             company delivering complete contracting services —
@@ -277,8 +269,7 @@ const Home = () => {
                                 key={stat.id}
                                 variants={itemVariants}
                                 className="stat-card"
-                                {...cardHoverProps}
-                            >
+                                {...cardHoverProps}>
                                 <h3>
                                     <Counter
                                         end={stat.end}
@@ -298,16 +289,14 @@ const Home = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true, margin: "-100px" }}
-            >
+                viewport={{ once: true, margin: "-100px" }}>
                 <div className="services-container">
                     <motion.div
                         className="services-header"
                         initial={{ y: -20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
+                        viewport={{ once: true }}>
                         <h2>
                             Our <span className="accent">Core</span> Services
                         </h2>
@@ -324,8 +313,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.1 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            {...cardHoverProps}
-                        >
+                            {...cardHoverProps}>
                             <div className="service-image">
                                 <img
                                     src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
@@ -351,8 +339,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            {...cardHoverProps}
-                        >
+                            {...cardHoverProps}>
                             <div className="service-image">
                                 <img
                                     src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
@@ -378,8 +365,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            {...cardHoverProps}
-                        >
+                            {...cardHoverProps}>
                             <div className="service-image">
                                 <img
                                     src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
@@ -404,8 +390,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            {...cardHoverProps}
-                        >
+                            {...cardHoverProps}>
                             <div className="service-image">
                                 <img
                                     src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
@@ -430,8 +415,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            {...cardHoverProps}
-                        >
+                            {...cardHoverProps}>
                             <div className="service-image">
                                 <img
                                     src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
@@ -456,8 +440,7 @@ const Home = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.6 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            {...cardHoverProps}
-                        >
+                            {...cardHoverProps}>
                             <div className="service-image">
                                 <img
                                     src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
@@ -480,14 +463,14 @@ const Home = () => {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        viewport={{ once: true }}
-                    >
-                        <motion.button
-                            className="view-more-button dark"
-                            {...hoverProps}
-                        >
-                            View All Services
-                        </motion.button>
+                        viewport={{ once: true }}>
+                        <Link to="/services">
+                            <motion.button
+                                className="view-more-button dark"
+                                {...hoverProps}>
+                                View All Services
+                            </motion.button>
+                        </Link>
                     </motion.div>
                 </div>
             </motion.section>
@@ -498,8 +481,7 @@ const Home = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
-                viewport={{ once: true, margin: "-100px" }}
-            >
+                viewport={{ once: true, margin: "-100px" }}>
                 <div className="about-container">
                     {/* Decorative elements */}
                     <div className="about-pattern"></div>
@@ -511,8 +493,7 @@ const Home = () => {
                             initial={{ x: -50, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
                             transition={{ duration: 0.6 }}
-                            viewport={{ once: true }}
-                        >
+                            viewport={{ once: true }}>
                             {/* 2017 Marker */}
                             <div className="timeline-marker">
                                 <div className="marker-line"></div>
@@ -521,8 +502,7 @@ const Home = () => {
                             </div>
                             <motion.div
                                 className="timeline-card"
-                                {...timelineCardHoverProps}
-                            >
+                                {...timelineCardHoverProps}>
                                 <h4>Our Foundation</h4>
                                 <p>
                                     Prescuro AB was established in Stockholm
@@ -539,8 +519,7 @@ const Home = () => {
                             </div>
                             <motion.div
                                 className="timeline-card"
-                                {...timelineCardHoverProps}
-                            >
+                                {...timelineCardHoverProps}>
                                 <h4>Growth Milestone</h4>
                                 <p>
                                     Expanded operations across Scandinavia with
@@ -559,8 +538,7 @@ const Home = () => {
                             </div>
                             <motion.div
                                 className="timeline-card"
-                                {...timelineCardHoverProps}
-                            >
+                                {...timelineCardHoverProps}>
                                 <h4>Current Progress (as of June)</h4>
                                 <p>
                                     As of June, we've achieved significant
@@ -585,8 +563,7 @@ const Home = () => {
                                 initial={{ y: -20, opacity: 0 }}
                                 whileInView={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.2 }}
-                                viewport={{ once: true }}
-                            >
+                                viewport={{ once: true }}>
                                 <div className="section-badge dark">
                                     About Us
                                 </div>
@@ -612,14 +589,12 @@ const Home = () => {
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: 0.4 }}
-                                viewport={{ once: true }}
-                            >
+                                viewport={{ once: true }}>
                                 <div className="feature-icon dark">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24"
-                                        fill="var(--primary)"
-                                    >
+                                        fill="var(--primary)">
                                         <path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" />
                                     </svg>
                                 </div>
@@ -649,15 +624,13 @@ const Home = () => {
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: 0.6 }}
-                                viewport={{ once: true }}
-                            >
+                                viewport={{ once: true }}>
                                 <div className="feature-icon dark">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24"
-                                        fill="var(--primary)"
-                                    >
-                                        <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
+                                        fill="var(--primary)">
+                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11V11.99z" />
                                     </svg>
                                 </div>
                                 <div className="feature-text">
@@ -683,15 +656,13 @@ const Home = () => {
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: 0.8 }}
-                                viewport={{ once: true }}
-                            >
+                                viewport={{ once: true }}>
                                 <div className="feature-icon dark">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24"
-                                        fill="var(--primary)"
-                                    >
-                                        <path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" />
+                                        fill="var(--primary)">
+                                        <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5c0 1.78 2 4.25 4 5.5h1v-2.25c1.61-1.1 3-2.5 3-3.25 0-.5-1-2.5-1-2.5l5.5-1.5 1.5 1.5H17z" />
                                     </svg>
                                 </div>
                                 <div className="feature-text">
@@ -718,14 +689,14 @@ const Home = () => {
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: 0.5 }}
-                                viewport={{ once: true }}
-                            >
-                                <motion.button
-                                    className="view-more-button dark"
-                                    {...hoverProps}
-                                >
-                                    More About Us
-                                </motion.button>
+                                viewport={{ once: true }}>
+                                <Link to={"/about"}>
+                                    <motion.button
+                                        className="view-more-button dark"
+                                        {...hoverProps}>
+                                        More About Us
+                                    </motion.button>
+                                </Link>
                             </motion.div>
                         </div>
                     </div>
