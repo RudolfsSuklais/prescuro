@@ -18,7 +18,7 @@ const ProjectsSection = () => {
             description:
                 "Complete construction of a modern housing village in Sweden",
             year: "2023",
-            image: p1,
+            image: p3,
             stats: {
                 area: "25,000 m²",
                 duration: "24 months",
@@ -45,24 +45,11 @@ const ProjectsSection = () => {
             description:
                 "Engineering complex concrete structures up to 8m height",
             year: "2023",
-            image: p3,
+            image: p1,
             stats: {
                 area: "12,000 m²",
                 duration: "18 months",
                 team: "45 specialists",
-            },
-        },
-        {
-            id: 4,
-            title: "Nordic Residential Community",
-            category: "residential",
-            description: "Scandinavian-style village with durable finishes",
-            year: "2024",
-            image: p4,
-            stats: {
-                area: "30,000 m²",
-                duration: "28 months",
-                team: "95 specialists",
             },
         },
     ];

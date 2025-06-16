@@ -43,15 +43,13 @@ const NavBar = () => {
             variants={navVariants}
             className={`navbar ${scrolled ? "scrolled" : ""} ${
                 mobileMenuOpen ? "mobile-open" : ""
-            }`}
-        >
+            }`}>
             <div className="navbar-container">
                 {/* Logo */}
                 <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="logo"
-                >
+                    className="logo">
                     <NavLink to="/">
                         <img
                             src={logo}
@@ -67,15 +65,13 @@ const NavBar = () => {
                         <motion.li
                             key={item.path}
                             whileHover={{ y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
+                            whileTap={{ scale: 0.95 }}>
                             <NavLink
                                 to={item.path}
                                 end={item.end}
                                 className={({ isActive }) =>
                                     `nav-link ${isActive ? "active" : ""}`
-                                }
-                            >
+                                }>
                                 {item.name}
                                 <div className="nav-underline" />
                             </NavLink>
@@ -87,14 +83,12 @@ const NavBar = () => {
                 <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="nav-cta"
-                >
+                    className="nav-cta">
                     <NavLink
                         to="/contact"
                         className={({ isActive }) =>
                             `cta-button ${isActive ? "active-cta" : ""}`
-                        }
-                    >
+                        }>
                         Get a Quote
                     </NavLink>
                 </motion.div>
@@ -104,8 +98,7 @@ const NavBar = () => {
                     className="mobile-menu-button"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     aria-label="Toggle menu"
-                    aria-expanded={mobileMenuOpen}
-                >
+                    aria-expanded={mobileMenuOpen}>
                     {[0, 1, 2].map((index) => (
                         <motion.div
                             key={index}
@@ -133,8 +126,7 @@ const NavBar = () => {
                         : { height: 0, opacity: 0 }
                 }
                 className="mobile-menu"
-                style={{ pointerEvents: mobileMenuOpen ? "auto" : "none" }}
-            >
+                style={{ pointerEvents: mobileMenuOpen ? "auto" : "none" }}>
                 <ul>
                     {navItems.map((item, index) => (
                         <motion.li
@@ -145,15 +137,13 @@ const NavBar = () => {
                                     ? { x: 0, opacity: 1 }
                                     : { x: -20, opacity: 0 }
                             }
-                            transition={{ delay: index * 0.1 }}
-                        >
+                            transition={{ delay: index * 0.1 }}>
                             <NavLink
                                 to={item.path}
                                 end={item.end}
                                 className={({ isActive }) =>
                                     `mobile-link ${isActive ? "active" : ""}`
-                                }
-                            >
+                                }>
                                 {item.name}
                             </NavLink>
                         </motion.li>
@@ -165,14 +155,12 @@ const NavBar = () => {
                                 ? { x: 0, opacity: 1 }
                                 : { x: -20, opacity: 0 }
                         }
-                        transition={{ delay: navItems.length * 0.1 }}
-                    >
+                        transition={{ delay: navItems.length * 0.1 }}>
                         <NavLink
                             to="/contact"
                             className={({ isActive }) =>
                                 `mobile-cta ${isActive ? "active-cta" : ""}`
-                            }
-                        >
+                            }>
                             Get a Quote
                         </NavLink>
                     </motion.li>

@@ -181,8 +181,9 @@ const Home = () => {
                         className="hero-tagline">
                         <div className="quality-badge">Swedish Quality</div>
                         <h1>
-                            Expert <span className="accent">Construction </span>
-                            Across Europe
+                            Leading{" "}
+                            <span className="accent"> Construction</span>{" "}
+                            Services Across Europe
                         </h1>
                     </motion.div>
 
@@ -368,7 +369,7 @@ const Home = () => {
                             {...cardHoverProps}>
                             <div className="service-image">
                                 <img
-                                    src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                    src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg"
                                     alt="Electrical & Plumbing"
                                     loading="lazy"
                                 />
@@ -393,7 +394,7 @@ const Home = () => {
                             {...cardHoverProps}>
                             <div className="service-image">
                                 <img
-                                    src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                    src="https://oknoplast.us/wp-content/uploads/2022/08/Aluminium-Front-Door-58742.jpg"
                                     alt="Doors & Windows"
                                     loading="lazy"
                                 />
@@ -418,7 +419,7 @@ const Home = () => {
                             {...cardHoverProps}>
                             <div className="service-image">
                                 <img
-                                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                    src="https://apavisa.com/storage/travertino-salon-moderno-con-ventanales.jpg"
                                     alt="Flooring & Installation"
                                     loading="lazy"
                                 />
@@ -443,7 +444,7 @@ const Home = () => {
                             {...cardHoverProps}>
                             <div className="service-image">
                                 <img
-                                    src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                    src="https://www.tatesurveyingservices.co.uk/wp-content/uploads/2023/04/interesting-roof-designs-2.webp"
                                     alt="Roofing & Plasterboard"
                                     loading="lazy"
                                 />

@@ -17,6 +17,7 @@ const Contact = () => {
 
     const subjects = [
         "General Inquiry",
+        "Material Inquiry",
         "Project Consultation",
         "Workforce Solutions",
         "Career Opportunities",
@@ -154,7 +155,7 @@ const Contact = () => {
                             </div>
                             <div className="info-content">
                                 <h3>Phone</h3>
-                                <p>+46 8 123 4567</p>
+                                <p>+971 502 646 238</p>
                             </div>
                         </div>
                         <div className="info-item">
@@ -168,7 +169,7 @@ const Contact = () => {
                             </div>
                             <div className="info-content">
                                 <h3>Headquarters</h3>
-                                <p>Stockholm, Sweden</p>
+                                <p>Box 2888, 187 28 Täby, Stockholm, Sweden</p>
                             </div>
                         </div>
                     </motion.div>

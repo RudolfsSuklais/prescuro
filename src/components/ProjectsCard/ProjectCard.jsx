@@ -65,7 +65,7 @@ const ProjectCard = ({ project, index }) => {
                     className="project-button"
                     whileHover={{
                         backgroundColor: "#30d5c8",
-                        color: "#252525",
+                        color: "#30d5c8",
                     }}
                     whileTap={{ scale: 0.95 }}>
                     View Project Details

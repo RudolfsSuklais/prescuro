@@ -153,84 +153,6 @@ const Footer = () => {
                             </ul>
                         </motion.div>
 
-                        {/* Services Column */}
-                        <motion.div
-                            className="footer-column"
-                            initial={{ y: 20, opacity: 0 }}
-                            whileInView={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            viewport={{ once: true }}>
-                            <h3 className="footer-title">Our Services</h3>
-                            <ul className="footer-links">
-                                <li>
-                                    <motion.a
-                                        href="#"
-                                        whileHover={{
-                                            x: 5,
-                                            color: "var(--primary)",
-                                        }}
-                                        className="footer-link">
-                                        Structural Works
-                                    </motion.a>
-                                </li>
-                                <li>
-                                    <motion.a
-                                        href="#"
-                                        whileHover={{
-                                            x: 5,
-                                            color: "var(--primary)",
-                                        }}
-                                        className="footer-link">
-                                        Interior Works
-                                    </motion.a>
-                                </li>
-                                <li>
-                                    <motion.a
-                                        href="#"
-                                        whileHover={{
-                                            x: 5,
-                                            color: "var(--primary)",
-                                        }}
-                                        className="footer-link">
-                                        Electrical & Plumbing
-                                    </motion.a>
-                                </li>
-                                <li>
-                                    <motion.a
-                                        href="#"
-                                        whileHover={{
-                                            x: 5,
-                                            color: "var(--primary)",
-                                        }}
-                                        className="footer-link">
-                                        Doors & Windows
-                                    </motion.a>
-                                </li>
-                                <li>
-                                    <motion.a
-                                        href="#"
-                                        whileHover={{
-                                            x: 5,
-                                            color: "var(--primary)",
-                                        }}
-                                        className="footer-link">
-                                        Flooring Installation
-                                    </motion.a>
-                                </li>
-                                <li>
-                                    <motion.a
-                                        href="#"
-                                        whileHover={{
-                                            x: 5,
-                                            color: "var(--primary)",
-                                        }}
-                                        className="footer-link">
-                                        Roofing & Plasterboard
-                                    </motion.a>
-                                </li>
-                            </ul>
-                        </motion.div>
-
                         {/* Contact Column */}
                         <motion.div
                             className="footer-column"
@@ -247,7 +169,9 @@ const Footer = () => {
                                         fill="currentColor">
                                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                                     </svg>
-                                    <span>Stockholm, Sweden</span>
+                                    <span>
+                                        Box 2888, 187 28 Täby, Stockholm, Sweden
+                                    </span>
                                 </li>
                                 <li className="contact-item">
                                     <svg
@@ -265,7 +189,7 @@ const Footer = () => {
                                         fill="currentColor">
                                         <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                                     </svg>
-                                    <span>+46 8 123 4567</span>
+                                    <span>+971 502 646 238</span>
                                 </li>
                                 <li className="contact-item">
                                     <svg

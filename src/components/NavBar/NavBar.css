@@ -169,6 +169,17 @@
     color: #30d5c8;
 }
 
+.mobile-cta {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #30d5c8;
+    color: #252525 !important; /* Add this line to force dark text */
+    border-radius: 0;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-decoration: none; /* Also good to add this to remove underline */
+}
+
 /* Changed mobile CTA to sharp corners */
 .mobile-cta {
     display: inline-block;
@@ -189,6 +200,7 @@
 
     .mobile-menu-button {
         display: flex;
+        color: #252525;
     }
 }
 

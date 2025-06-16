@@ -13,6 +13,7 @@ import Services from "./Pages/Services.jsx";
 import Projects from "./Pages/Projects.jsx";
 import About from "./Pages/About.jsx";
 import Contact from "./Pages/Contact.jsx";
+import NotFoundPage from "./Pages/NotFoundPage.jsx";
 const ScrollToTop = () => {
     const { pathname } = useLocation();
 
@@ -39,6 +40,7 @@ function App() {
                     <Route path="/projects" element={<Projects />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/*" element={<NotFoundPage />} />
                 </Routes>
 
                 <Footer />

@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import "./Services.css"; // We'll create this CSS file
+import { Link } from "react-router-dom";
 
 const Services = () => {
     // Check if device is mobile
@@ -73,7 +74,7 @@ const Services = () => {
                 "Fire protection systems",
                 "Building automation",
             ],
-            image: "https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+            image: "https://www.truecadd.com/wp-content/themes/truecaddtheme/images/mep-3d-modeling/mep-model-of-multistorey-mix-used-building-large.jpg",
         },
         {
             id: 4,
@@ -86,7 +87,7 @@ const Services = () => {
                 "Metal panel cladding",
                 "Waterproofing",
             ],
-            image: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+            image: "https://st.hzcdn.com/simgs/pictures/exteriors/gray-s-crossing-mountain-modern-golf-course-home-in-house-builders-img~caa191290a8fab76_14-8692-1-7195ae8.jpg",
         },
         {
             id: 5,
@@ -99,7 +100,7 @@ const Services = () => {
                 "Laboratory facilities",
                 "Secure environments",
             ],
-            image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+            image: "https://tubefittings.eu/blog/wp-content/uploads/2023/07/luksusowe-drewniane-lamele-do-w-sypialni-900x450.jpg",
         },
         {
             id: 6,
@@ -113,7 +114,7 @@ const Services = () => {
                 "Safety management",
                 "Turnkey delivery",
             ],
-            image: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+            image: "https://teltonika-networks.com/cdn/extras/12448/social-usecase-197-en-1200xAuto.jpg",
         },
     ];
 
@@ -177,8 +178,7 @@ const Services = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="hero-text"
-                    >
+                        className="hero-text">
                         <div className="section-badge">Our Services</div>
                         <h1>
                             Comprehensive{" "}
@@ -204,8 +204,7 @@ const Services = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
+                        viewport={{ once: true }}>
                         <h2>
                             Our <span className="accent">Service</span>{" "}
                             Categories
@@ -227,8 +226,7 @@ const Services = () => {
                                     delay: index * 0.1,
                                 }}
                                 viewport={{ once: true, margin: "-50px" }}
-                                {...cardHoverProps}
-                            >
+                                {...cardHoverProps}>
                                 <div className="service-image">
                                     <img
                                         src={category.image}
@@ -262,8 +260,7 @@ const Services = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
+                        viewport={{ once: true }}>
                         <div className="section-badge">Our Process</div>
                         <h2>
                             The <span className="accent">Prescuro</span> Way
@@ -287,16 +284,14 @@ const Services = () => {
                                     delay: index * 0.1,
                                 }}
                                 viewport={{ once: true, margin: "-50px" }}
-                                {...cardHoverProps}
-                            >
+                                {...cardHoverProps}>
                                 <div className="process-card-header">
                                     <div
                                         className="process-step-number"
                                         style={{
                                             backgroundColor: step.color,
                                             boxShadow: `0 0 0 8px ${step.color}20`,
-                                        }}
-                                    >
+                                        }}>
                                         {step.step}
                                     </div>
                                     <div className="process-icon-wrapper">
@@ -340,8 +335,7 @@ const Services = () => {
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6 }}
-                            viewport={{ once: true }}
-                        >
+                            viewport={{ once: true }}>
                             <div className="section-badge">Materials</div>
                             <h2>
                                 Premium{" "}
@@ -375,20 +369,20 @@ const Services = () => {
                                     </ul>
                                 </div>
                             </div>
-                            <motion.button
-                                className="view-more-button dark"
-                                {...hoverProps}
-                            >
-                                Request Materials Catalog
-                            </motion.button>
+                            <Link to="/contact">
+                                <motion.button
+                                    className="view-more-button dark"
+                                    {...hoverProps}>
+                                    Request Materials Catalog
+                                </motion.button>
+                            </Link>
                         </motion.div>
                         <motion.div
                             className="materials-image"
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6 }}
-                            viewport={{ once: true }}
-                        >
+                            viewport={{ once: true }}>
                             <img
                                 src="https://images.pexels.com/photos/396550/pexels-photo-396550.jpeg?auto=compress&cs=tinysrgb&w=600"
                                 alt="Construction materials"
@@ -407,8 +401,7 @@ const Services = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
+                        viewport={{ once: true }}>
                         <h2>
                             Ready to Start Your{" "}
                             <span className="accent">Project</span>?
@@ -420,12 +413,13 @@ const Services = () => {
                             expertise.
                         </p>
                         <div className="cta-buttons">
-                            <motion.button
-                                className="view-more-button dark"
-                                {...hoverProps}
-                            >
-                                Get a Free Consultation
-                            </motion.button>
+                            <Link to={"/contact"}>
+                                <motion.button
+                                    className="view-more-button dark"
+                                    {...hoverProps}>
+                                    Get a Free Consultation
+                                </motion.button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

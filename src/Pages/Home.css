@@ -142,10 +142,19 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    .hero {
+        padding-top: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
     .hero-content h1 {
         font-size: 2.5rem;
     }
 }
+
 /* Modern Stats Section */
 .stats-section {
     position: relative;

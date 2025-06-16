@@ -1,7 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import "./Projects.css";
-
+import { Link } from "react-router-dom";
+import p1 from "../components/Projects/p1.jpg";
+import p2 from "../components/Projects/p2.jpg";
+import p3 from "../components/Projects/p3.jpg";
 import ProjectCard from "../components/ProjectsCard/ProjectCard.jsx";
 
 const Projects = () => {
@@ -100,85 +103,45 @@ const Projects = () => {
               whileHover: { y: -10 },
           };
 
-    // Sample projects data
     const projects = [
         {
             id: 1,
-            title: "Stockholm Office Complex",
+            title: "Swedish Village Development",
             location: "Stockholm, Sweden",
-            type: "Commercial",
-            year: "2024",
-            size: "12,500 m²",
-            duration: "18 months",
+            type: "Residential",
+            year: "2023",
+            size: "25,000 m²",
+            duration: "24 months",
             description:
-                "A modern 8-story office building with sustainable features and smart technology integration in the heart of Stockholm's business district.",
-            image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            tags: ["LEED Certified", "Smart Building", "Commercial"],
+                "Complete construction of a modern housing village in Sweden featuring sustainable materials and community spaces.",
+            image: p3,
+            tags: ["Residential", "Sustainable", "Community"],
         },
         {
             id: 2,
-            title: "Gothenburg Residential Tower",
+            title: "Modular Housing Complex",
             location: "Gothenburg, Sweden",
             type: "Residential",
-            year: "2023",
-            size: "8,200 m²",
-            duration: "14 months",
+            year: "2022",
+            size: "18,500 m²",
+            duration: "20 months",
             description:
-                "A 15-story luxury residential tower with panoramic views of the Göta älv river, featuring premium finishes and amenities.",
-            image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            tags: ["Luxury", "Waterfront", "Residential"],
+                "Multi-unit housing with efficient modular design that reduced construction time by 30% compared to traditional methods.",
+            image: p2,
+            tags: ["Modular", "Efficient", "Residential"],
         },
         {
             id: 3,
-            title: "Malmö Mixed-Use Development",
+            title: "High-Load Concrete Structures",
             location: "Malmö, Sweden",
-            type: "Mixed-Use",
+            type: "Commercial",
             year: "2023",
-            size: "22,000 m²",
-            duration: "24 months",
+            size: "12,000 m²",
+            duration: "18 months",
             description:
-                "Integrated development combining retail, office space, and residential units with public plazas and green spaces.",
-            image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            tags: ["Mixed-Use", "Urban Development", "Green Spaces"],
-        },
-        {
-            id: 4,
-            title: "Uppsala University Expansion",
-            location: "Uppsala, Sweden",
-            type: "Educational",
-            year: "2022",
-            size: "15,800 m²",
-            duration: "20 months",
-            description:
-                "New campus facilities including lecture halls, research labs, and student commons for Sweden's oldest university.",
-            image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            tags: ["Educational", "Campus", "Public Sector"],
-        },
-        {
-            id: 5,
-            title: "Oslo Hospitality Complex",
-            location: "Oslo, Norway",
-            type: "Hospitality",
-            year: "2022",
-            size: "9,500 m²",
-            duration: "16 months",
-            description:
-                "Boutique hotel and conference center with Scandinavian design elements and sustainable construction practices.",
-            image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            tags: ["Hospitality", "Boutique", "Scandinavian Design"],
-        },
-        {
-            id: 6,
-            title: "Copenhagen Retail Center",
-            location: "Copenhagen, Denmark",
-            type: "Retail",
-            year: "2021",
-            size: "18,300 m²",
-            duration: "22 months",
-            description:
-                "Modern shopping center with innovative architectural features and energy-efficient systems in the Ørestad district.",
-            image: "https://images.unsplash.com/photo-1601918774946-25832a4be0d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            tags: ["Retail", "Energy Efficient", "Modern Architecture"],
+                "Engineering complex concrete structures up to 8m height for a new commercial development with challenging architectural requirements.",
+            image: p1,
+            tags: ["Concrete", "Commercial", "Engineering"],
         },
     ];
 
@@ -459,16 +422,21 @@ const Projects = () => {
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}>
-                        <h2>Ready to Start Your Project?</h2>
+                        <h2>
+                            Ready to <span className="accent">Start</span> Your
+                            Project?
+                        </h2>
                         <p>
                             Contact us today to discuss your construction needs
                             and how we can bring your vision to life.
                         </p>
-                        <motion.button
-                            {...hoverProps}
-                            className="cta-button primary">
-                            GET IN TOUCH
-                        </motion.button>
+                        <Link to="/contact">
+                            <motion.button
+                                {...hoverProps}
+                                className="cta-button primary">
+                                GET IN TOUCH
+                            </motion.button>
+                        </Link>
                     </motion.div>
                 </div>
             </motion.section>

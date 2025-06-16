@@ -20,6 +20,7 @@
     text-align: center;
     color: white;
     overflow: hidden;
+    background-color: #0a0a0a;
 }
 
 .hero-gradient-overlay {
@@ -30,8 +31,8 @@
     height: 100%;
     background: linear-gradient(
         135deg,
-        rgba(37, 37, 37, 0.9) 0%,
-        rgba(37, 37, 37, 0.6) 100%
+        rgba(18, 18, 18, 0.95) 0%,
+        rgba(48, 213, 200, 0.15) 100%
     );
     z-index: 1;
 }
