@@ -10,7 +10,7 @@ const Home = () => {
     const statsRef = useRef();
     const isInView = useInView(statsRef, { once: true, margin: "-100px" });
     const constructionVideo =
-        "https://res.cloudinary.com/dszkl0dtq/video/upload/v1749750296/Untitled_video_-_Made_with_Clipchamp_1_jziedi.mp4";
+        "https://videos.pexels.com/video-files/2406631/2406631-uhd_2560_1440_24fps.mp4";
 
     // Check if device supports hover (desktop) or not (mobile)
     const [isMobile, setIsMobile] = React.useState(false);
@@ -248,7 +248,7 @@ const Home = () => {
                         variants={itemVariants}
                         className="stats-header">
                         <h2>Build With Confidence</h2>
-                        <p>Trusted Across Europe for Over a Decade</p>
+                        <p>Trusted Across Europe</p>
                     </motion.div>
 
                     <motion.div
@@ -369,7 +369,7 @@ const Home = () => {
                             {...cardHoverProps}>
                             <div className="service-image">
                                 <img
-                                    src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg"
+                                    src="https://cdn.accentuate.io/607742492976/-1695035269432/Bathroom-Lighting-Ideas-v1718268796460.png?800x800="
                                     alt="Electrical & Plumbing"
                                     loading="lazy"
                                 />

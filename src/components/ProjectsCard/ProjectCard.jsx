@@ -60,16 +60,6 @@ const ProjectCard = ({ project, index }) => {
                         </span>
                     ))}
                 </div>
-
-                <motion.button
-                    className="project-button"
-                    whileHover={{
-                        backgroundColor: "#30d5c8",
-                        color: "#30d5c8",
-                    }}
-                    whileTap={{ scale: 0.95 }}>
-                    View Project Details
-                </motion.button>
             </div>
         </motion.div>
     );

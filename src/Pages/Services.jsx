@@ -141,7 +141,7 @@ const Services = () => {
             step: 3,
             title: "Material Procurement",
             description:
-                "We source premium materials from trusted European suppliers with quality guarantees.",
+                "We source premium materials from trusted suppliers around the world—including Europe, Southeast Asia and the Middle East backed by strict quality guarantees",
             icon: "fas fa-boxes",
             color: "#ff9f1c",
             iconType: "font-awesome",
@@ -187,10 +187,10 @@ const Services = () => {
                         </h1>
                         <p className="hero-description">
                             From initial groundwork to final finishes, Prescuro
-                            AB delivers complete construction services across
-                            Europe. Our expertise spans all project phases,
-                            ensuring quality, efficiency, and reliability at
-                            every step.
+                            AB delivers complete construction services
+                            internationally. Our expertise spans all project
+                            phases, ensuring quality, efficiency, and
+                            reliability at every step.
                         </p>
                     </motion.div>
                 </div>
@@ -338,34 +338,71 @@ const Services = () => {
                             viewport={{ once: true }}>
                             <div className="section-badge">Materials</div>
                             <h2>
-                                Premium{" "}
-                                <span className="accent">Materials</span>{" "}
-                                Sourcing
+                                Global Sourcing of{" "}
+                                <span className="accent">
+                                    Premium Materials
+                                </span>
                             </h2>
                             <p>
                                 Prescuro AB provides access to high-quality
-                                construction materials from leading European
-                                suppliers. We handle procurement, logistics, and
-                                quality assurance to ensure your project gets
-                                the best materials on time.
+                                construction materials from trusted suppliers
+                                worldwide. We manage procurement, logistics, and
+                                quality assurance to ensure your project
+                                receives the best materials—on time and to
+                                specification.
                             </p>
                             <div className="materials-list">
                                 <div className="material-category">
-                                    <h4>Structural</h4>
+                                    <h4>Structural Materials</h4>
                                     <ul>
-                                        <li>Concrete & cement</li>
-                                        <li>Steel beams & rebar</li>
-                                        <li>Timber & engineered wood</li>
-                                        <li>Masonry blocks</li>
+                                        <li>
+                                            Steel beams, rebar & structural
+                                            profiles
+                                        </li>
+                                        <li>
+                                            Timber & engineered wood (including
+                                            birch plywood)
+                                        </li>
+                                        <li>Masonry and construction blocks</li>
+                                        <li>
+                                            Insulated panels & structural
+                                            cladding
+                                        </li>
                                     </ul>
                                 </div>
                                 <div className="material-category">
-                                    <h4>Finishes</h4>
+                                    <h4>Interior & Finishing Products</h4>
                                     <ul>
-                                        <li>Flooring materials</li>
-                                        <li>Wall coverings</li>
-                                        <li>Ceiling systems</li>
-                                        <li>Doors & windows</li>
+                                        <li>
+                                            Flooring systems (wood, laminate,
+                                            vinyl)
+                                        </li>
+                                        <li>Wall panels & coverings</li>
+                                        <li>
+                                            Ceiling structures & acoustic
+                                            systems
+                                        </li>
+                                        <li>
+                                            Doors, windows & interior joinery
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div className="material-category">
+                                    <h4>Aluminum Systems & Solutions</h4>
+                                    <ul>
+                                        <li>
+                                            Complete aluminum façade systems
+                                        </li>
+                                        <li>
+                                            Curtain walls & unitized façades
+                                        </li>
+                                        <li>
+                                            Windows, doors & sliding systems
+                                        </li>
+                                        <li>
+                                            Pergolas, partitions & custom
+                                            architectural elements
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
