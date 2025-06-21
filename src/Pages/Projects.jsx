@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import "./Projects.css";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import p3 from "../components/Projects/p3.jpg";
 import ProjectCard from "../components/ProjectsCard/ProjectCard.jsx";
 
 const Projects = () => {
+    const [expandedCardId, setExpandedCardId] = useState(null);
     const controls = useAnimation();
     const projectsRef = useRef();
     const isInView = useInView(projectsRef, { once: true, margin: "-100px" });
@@ -97,12 +98,15 @@ const Projects = () => {
               whileTap: { scale: 0.95 },
           };
 
+    // Replace the existing cardHoverProps with:
     const cardHoverProps = isMobile
         ? {}
         : {
-              whileHover: { y: -10 },
+              whileHover: {
+                  // Remove the y transform
+                  boxShadow: "0 10px 25px rgba(0,0,0,0.2)", // Optional: add subtle shadow instead
+              },
           };
-
     const projects = [
         {
             id: 1,
@@ -116,6 +120,20 @@ const Projects = () => {
                 "Complete construction of a modern housing village in Sweden featuring sustainable materials and community spaces.",
             image: p3,
             tags: ["Residential", "Sustainable", "Community"],
+            phases: [
+                { name: "Planning", status: "completed", date: "Q1 2022" },
+                {
+                    name: "Phase 1 Construction",
+                    status: "completed",
+                    date: "Q3 2022",
+                },
+                {
+                    name: "Phase 2 Construction",
+                    status: "completed",
+                    date: "Q1 2023",
+                },
+                { name: "Final Touches", status: "ongoing", date: "Q3 2023" },
+            ],
         },
         {
             id: 2,
@@ -129,6 +147,15 @@ const Projects = () => {
                 "Multi-unit housing with efficient modular design that reduced construction time by 30% compared to traditional methods.",
             image: p2,
             tags: ["Modular", "Efficient", "Residential"],
+            phases: [
+                { name: "Foundation", status: "completed", date: "Q1 2022" },
+                {
+                    name: "Module Installation",
+                    status: "completed",
+                    date: "Q3 2022",
+                },
+                { name: "Finishing", status: "completed", date: "Q4 2022" },
+            ],
         },
         {
             id: 3,
@@ -142,6 +169,24 @@ const Projects = () => {
                 "Engineering complex concrete structures up to 8m height for a new commercial development with challenging architectural requirements.",
             image: p1,
             tags: ["Concrete", "Commercial", "Engineering"],
+            phases: [
+                { name: "Design Phase", status: "completed", date: "Q4 2022" },
+                {
+                    name: "Foundation Work",
+                    status: "completed",
+                    date: "Q1 2023",
+                },
+                {
+                    name: "Structure Construction",
+                    status: "ongoing",
+                    date: "Q2 2023",
+                },
+                {
+                    name: "Final Inspection",
+                    status: "planned",
+                    date: "Q4 2023",
+                },
+            ],
         },
     ];
 
@@ -257,7 +302,18 @@ const Projects = () => {
                                 key={project.id}
                                 variants={itemVariants}
                                 {...cardHoverProps}>
-                                <ProjectCard project={project} index={index} />
+                                <ProjectCard
+                                    project={project}
+                                    index={index}
+                                    isExpanded={expandedCardId === project.id}
+                                    onExpandToggle={() =>
+                                        setExpandedCardId(
+                                            expandedCardId === project.id
+                                                ? null
+                                                : project.id
+                                        )
+                                    }
+                                />
                             </motion.div>
                         ))}
                     </motion.div>

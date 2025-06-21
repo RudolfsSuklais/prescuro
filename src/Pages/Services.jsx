@@ -360,8 +360,8 @@ const Services = () => {
                                             profiles
                                         </li>
                                         <li>
-                                            Timber & engineered wood (including
-                                            birch plywood)
+                                            Timber & engineered wood (All kind
+                                            of plywood)
                                         </li>
                                         <li>Masonry and construction blocks</li>
                                         <li>
@@ -375,8 +375,9 @@ const Services = () => {
                                     <ul>
                                         <li>
                                             Flooring systems (wood, laminate,
-                                            vinyl)
+                                            vinyl, tiling, bamboo flooring)
                                         </li>
+
                                         <li>Wall panels & coverings</li>
                                         <li>
                                             Ceiling structures & acoustic

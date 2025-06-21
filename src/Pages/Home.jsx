@@ -247,8 +247,15 @@ const Home = () => {
                     <motion.div
                         variants={itemVariants}
                         className="stats-header">
-                        <h2>Build With Confidence</h2>
-                        <p>Trusted Across Europe</p>
+                        <h2>
+                            Build <span className="accent">With</span>{" "}
+                            Confidence
+                        </h2>
+                        <p>
+                            <span className="accent">
+                                Trusted Across Europe
+                            </span>
+                        </p>
                     </motion.div>
 
                     <motion.div

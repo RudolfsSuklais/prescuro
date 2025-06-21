@@ -4,7 +4,6 @@ import "./ProjectsSection.css";
 import p1 from "./p1.jpg";
 import p2 from "./p2.jpg";
 import p3 from "./p3.jpg";
-import p4 from "./p4.jpeg";
 import { Link } from "react-router-dom";
 
 const ProjectsSection = () => {
@@ -17,26 +16,36 @@ const ProjectsSection = () => {
             category: "residential",
             description:
                 "Complete construction of a modern housing village in Sweden",
-            year: "2023",
+            year: "2022",
             image: p3,
             stats: {
                 area: "25,000 m²",
                 duration: "24 months",
                 team: "80 specialists",
             },
+            phases: [
+                { name: "Phase 1", status: "finished", date: "Q1 2022" },
+                { name: "Phase 2", status: "finished", date: "Q3 2022" },
+                { name: "Phase 3", status: "ongoing", date: "Q1 2023" },
+                { name: "Phase 4", status: "planned", date: "Q3 2023" },
+            ],
         },
         {
             id: 2,
             title: "Modular Housing Complex",
             category: "residential",
             description: "Multi-unit housing with efficient modular design",
-            year: "2022",
+            year: "2023",
             image: p2,
             stats: {
                 area: "18,500 m²",
                 duration: "20 months",
                 team: "65 specialists",
             },
+            phases: [
+                { name: "Construction", status: "finished", date: "Q2 2023" },
+                { name: "Interiors", status: "finished", date: "Q4 2023" },
+            ],
         },
         {
             id: 3,
@@ -44,13 +53,18 @@ const ProjectsSection = () => {
             category: "commercial",
             description:
                 "Engineering complex concrete structures up to 8m height",
-            year: "2023",
+            year: "2025",
             image: p1,
             stats: {
                 area: "12,000 m²",
                 duration: "18 months",
                 team: "45 specialists",
             },
+            phases: [
+                { name: "Foundation", status: "finished", date: "Q1 2025" },
+                { name: "Structure", status: "ongoing", date: "Q2 2025" },
+                { name: "Finishing", status: "planned", date: "Q4 2025" },
+            ],
         },
     ];
 
@@ -76,6 +90,19 @@ const ProjectsSection = () => {
                 delayChildren: 0.2,
             },
         },
+    };
+
+    const getStatusColor = (status) => {
+        switch (status) {
+            case "finished":
+                return "#30d5c8";
+            case "ongoing":
+                return "#ffa500";
+            case "planned":
+                return "rgba(255,255,255,0.2)";
+            default:
+                return "#30d5c8";
+        }
     };
 
     return (
@@ -119,6 +146,17 @@ const ProjectsSection = () => {
                                 <div className="project-year">
                                     {project.year}
                                 </div>
+                                <div className="project-status">
+                                    {project.phases.some(
+                                        (p) => p.status === "ongoing"
+                                    )
+                                        ? "Ongoing"
+                                        : project.phases.every(
+                                              (p) => p.status === "finished"
+                                          )
+                                        ? "Completed"
+                                        : "In Progress"}
+                                </div>
                             </div>
                             <div className="project-content">
                                 <div className="project-category">
@@ -156,6 +194,40 @@ const ProjectsSection = () => {
                                             <path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                                         </svg>
                                         <span>{project.stats.team}</span>
+                                    </div>
+                                </div>
+
+                                <div className="project-timeline">
+                                    <h4>Project Phases</h4>
+                                    <div className="timeline-container">
+                                        {project.phases.map((phase, index) => (
+                                            <div
+                                                key={index}
+                                                className="phase-item">
+                                                <div className="phase-info">
+                                                    <span className="phase-name">
+                                                        {phase.name}
+                                                    </span>
+                                                    <span className="phase-date">
+                                                        {phase.date}
+                                                    </span>
+                                                </div>
+                                                <div className="phase-status">
+                                                    <div
+                                                        className="status-indicator"
+                                                        style={{
+                                                            backgroundColor:
+                                                                getStatusColor(
+                                                                    phase.status
+                                                                ),
+                                                        }}
+                                                    />
+                                                    <span className="status-text">
+                                                        {phase.status}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
