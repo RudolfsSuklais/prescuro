@@ -25,9 +25,8 @@ const ProjectsSection = () => {
             },
             phases: [
                 { name: "Phase 1", status: "finished", date: "Q1 2022" },
-                { name: "Phase 2", status: "finished", date: "Q3 2022" },
-                { name: "Phase 3", status: "ongoing", date: "Q1 2023" },
-                { name: "Phase 4", status: "planned", date: "Q3 2023" },
+                { name: "Phase 2", status: "finished", date: "Q3 2025" },
+                { name: "Phase 3", status: "ongoing", date: "Q3 2025" },
             ],
         },
         {
@@ -35,7 +34,7 @@ const ProjectsSection = () => {
             title: "Modular Housing Complex",
             category: "residential",
             description: "Multi-unit housing with efficient modular design",
-            year: "2023",
+            year: "2022",
             image: p2,
             stats: {
                 area: "18,500 m²",
@@ -43,8 +42,8 @@ const ProjectsSection = () => {
                 team: "65 specialists",
             },
             phases: [
-                { name: "Construction", status: "finished", date: "Q2 2023" },
-                { name: "Interiors", status: "finished", date: "Q4 2023" },
+                { name: "Construction", status: "finished", date: "Q3 2024" },
+                { name: "Interiors", status: "finished", date: "Q4 2024" },
             ],
         },
         {
@@ -61,9 +60,9 @@ const ProjectsSection = () => {
                 team: "45 specialists",
             },
             phases: [
-                { name: "Foundation", status: "finished", date: "Q1 2025" },
-                { name: "Structure", status: "ongoing", date: "Q2 2025" },
-                { name: "Finishing", status: "planned", date: "Q4 2025" },
+                { name: "Foundation", status: "finished", date: "Q1 2023" },
+                { name: "Structure", status: "ongoing", date: "Q2 2024" },
+                { name: "Finishing", status: "planned", date: "Q3 2025" },
             ],
         },
     ];

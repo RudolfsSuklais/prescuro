@@ -184,7 +184,7 @@ const Projects = () => {
                 {
                     name: "Final Inspection",
                     status: "ongoing",
-                    date: "Q4 2025",
+                    date: "Q3 2025",
                 },
             ],
         },
