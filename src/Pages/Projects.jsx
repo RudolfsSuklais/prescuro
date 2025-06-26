@@ -125,14 +125,14 @@ const Projects = () => {
                 {
                     name: "Phase 1 Construction",
                     status: "completed",
-                    date: "Q3 2022",
+                    date: "Q3 2023",
                 },
                 {
                     name: "Phase 2 Construction",
                     status: "completed",
-                    date: "Q1 2023",
+                    date: "Q1 2025",
                 },
-                { name: "Final Touches", status: "ongoing", date: "Q3 2023" },
+                { name: "Final Touches", status: "ongoing", date: "Q3 2025" },
             ],
         },
         {
@@ -152,9 +152,9 @@ const Projects = () => {
                 {
                     name: "Module Installation",
                     status: "completed",
-                    date: "Q3 2022",
+                    date: "Q3 2024",
                 },
-                { name: "Finishing", status: "completed", date: "Q4 2022" },
+                { name: "Finishing", status: "completed", date: "Q3 2024" },
             ],
         },
         {
@@ -179,12 +179,12 @@ const Projects = () => {
                 {
                     name: "Structure Construction",
                     status: "ongoing",
-                    date: "Q2 2023",
+                    date: "Q2 2024",
                 },
                 {
                     name: "Final Inspection",
-                    status: "planned",
-                    date: "Q4 2023",
+                    status: "ongoing",
+                    date: "Q4 2025",
                 },
             ],
         },

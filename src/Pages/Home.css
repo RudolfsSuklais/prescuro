@@ -23,13 +23,13 @@
 /* Hero Section - Angular */
 .hero {
     position: relative;
-    height: 110vh;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
+    padding: 6rem;
 }
 
 .video-bg {
@@ -143,7 +143,7 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .hero {
-        padding-top: 3rem;
+        padding-top: 7rem;
     }
 
     .hero-content p {

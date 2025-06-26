@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import "./About.css";
+import { Link } from "react-router-dom";
 
 const About = () => {
     const controls = useAnimation();
@@ -625,16 +626,20 @@ const About = () => {
                             deliver Swedish-quality construction services.
                         </p>
                         <div className="cta-buttons">
-                            <motion.button
-                                {...hoverProps}
-                                className="cta-button primary">
-                                START A PROJECT
-                            </motion.button>
-                            <motion.button
-                                {...hoverProps}
-                                className="cta-button secondary">
-                                REQUEST WORKFORCE
-                            </motion.button>
+                            <Link to="/contact">
+                                <motion.button
+                                    {...hoverProps}
+                                    className="cta-button primary">
+                                    START A PROJECT
+                                </motion.button>
+                            </Link>
+                            <Link to={"/contact"}>
+                                <motion.button
+                                    {...hoverProps}
+                                    className="cta-button secondary">
+                                    REQUEST WORKFORCE
+                                </motion.button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>
