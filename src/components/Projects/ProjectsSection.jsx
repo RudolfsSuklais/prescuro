@@ -19,14 +19,14 @@ const ProjectsSection = () => {
             year: "2022",
             image: p3,
             stats: {
-                area: "25,000 m²",
-                duration: "24 months",
-                team: "80 specialists",
+                area: "9,458 m²",
+                duration: "36 months",
+                team: "40 specialists",
             },
             phases: [
                 { name: "Phase 1", status: "finished", date: "Q1 2022" },
                 { name: "Phase 2", status: "finished", date: "Q3 2025" },
-                { name: "Phase 3", status: "ongoing", date: "Q3 2025" },
+                { name: "Phase 3", status: "ongoing", date: "Q3 2026" },
             ],
         },
         {
@@ -37,9 +37,9 @@ const ProjectsSection = () => {
             year: "2022",
             image: p2,
             stats: {
-                area: "18,500 m²",
+                area: "12,832 m²",
                 duration: "20 months",
-                team: "65 specialists",
+                team: "45 specialists",
             },
             phases: [
                 { name: "Construction", status: "finished", date: "Q3 2024" },
@@ -55,14 +55,14 @@ const ProjectsSection = () => {
             year: "2025",
             image: p1,
             stats: {
-                area: "12,000 m²",
-                duration: "18 months",
-                team: "45 specialists",
+                area: "35,240 m²",
+                duration: "36 months",
+                team: "90 specialists",
             },
             phases: [
                 { name: "Foundation", status: "finished", date: "Q1 2023" },
                 { name: "Structure", status: "ongoing", date: "Q2 2024" },
-                { name: "Finishing", status: "planned", date: "Q3 2025" },
+                { name: "Finishing", status: "planned", date: "Q3 2026" },
             ],
         },
     ];

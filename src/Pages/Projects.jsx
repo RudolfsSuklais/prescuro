@@ -113,26 +113,17 @@ const Projects = () => {
             title: "Swedish Village Development",
             location: "Stockholm, Sweden",
             type: "Residential",
-            year: "2023",
-            size: "25,000 m²",
-            duration: "24 months",
+            year: "2022",
+            size: "9,458 m²",
+            duration: "36 months",
             description:
                 "Complete construction of a modern housing village in Sweden featuring sustainable materials and community spaces.",
             image: p3,
             tags: ["Residential", "Sustainable", "Community"],
             phases: [
-                { name: "Planning", status: "completed", date: "Q1 2022" },
-                {
-                    name: "Phase 1 Construction",
-                    status: "completed",
-                    date: "Q3 2023",
-                },
-                {
-                    name: "Phase 2 Construction",
-                    status: "completed",
-                    date: "Q1 2025",
-                },
-                { name: "Final Touches", status: "ongoing", date: "Q3 2025" },
+                { name: "Phase 1", status: "finished", date: "Q1 2022" },
+                { name: "Phase 2", status: "finished", date: "Q3 2025" },
+                { name: "Phase 3", status: "ongoing", date: "Q3 2026" },
             ],
         },
         {
@@ -141,20 +132,15 @@ const Projects = () => {
             location: "Gothenburg, Sweden",
             type: "Residential",
             year: "2022",
-            size: "18,500 m²",
+            size: "12,832 m²",
             duration: "20 months",
             description:
                 "Multi-unit housing with efficient modular design that reduced construction time by 30% compared to traditional methods.",
             image: p2,
             tags: ["Modular", "Efficient", "Residential"],
             phases: [
-                { name: "Foundation", status: "completed", date: "Q1 2022" },
-                {
-                    name: "Module Installation",
-                    status: "completed",
-                    date: "Q3 2024",
-                },
-                { name: "Finishing", status: "completed", date: "Q3 2024" },
+                { name: "Construction", status: "finished", date: "Q3 2024" },
+                { name: "Interiors", status: "finished", date: "Q4 2024" },
             ],
         },
         {
@@ -162,30 +148,17 @@ const Projects = () => {
             title: "High-Load Concrete Structures",
             location: "Malmö, Sweden",
             type: "Commercial",
-            year: "2023",
-            size: "12,000 m²",
-            duration: "18 months",
+            year: "2025",
+            size: "35,240 m²",
+            duration: "36 months",
             description:
                 "Engineering complex concrete structures up to 8m height for a new commercial development with challenging architectural requirements.",
             image: p1,
             tags: ["Concrete", "Commercial", "Engineering"],
             phases: [
-                { name: "Design Phase", status: "completed", date: "Q4 2022" },
-                {
-                    name: "Foundation Work",
-                    status: "completed",
-                    date: "Q1 2023",
-                },
-                {
-                    name: "Structure Construction",
-                    status: "ongoing",
-                    date: "Q2 2024",
-                },
-                {
-                    name: "Final Inspection",
-                    status: "ongoing",
-                    date: "Q3 2025",
-                },
+                { name: "Foundation", status: "finished", date: "Q1 2023" },
+                { name: "Structure", status: "ongoing", date: "Q2 2024" },
+                { name: "Finishing", status: "planned", date: "Q3 2026" },
             ],
         },
     ];
