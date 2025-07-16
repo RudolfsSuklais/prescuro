@@ -144,7 +144,7 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .hero {
-        padding-top: 7rem;
+        height: auto;
     }
 
     .hero-content p {
